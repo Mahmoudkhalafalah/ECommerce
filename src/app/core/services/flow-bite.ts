@@ -13,6 +13,7 @@ export class FlowbiteService {
       import('flowbite').then(flowbite => {
         callback(flowbite);
       });
+      
     }
   }
 }
