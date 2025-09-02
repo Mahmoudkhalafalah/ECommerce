@@ -1,0 +1,13 @@
+<section>
+  <div class="container mt-10">
+    <owl-carousel-o [options]="mainCarouselOptions">
+
+      @for (slide of sliderImages; track $index) {
+      <ng-template carouselSlide>
+        <img [src]="slide.url" [alt]="slide.alt" [title]="slide.alt">
+      </ng-template>
+      }
+
+    </owl-carousel-o>
+  </div>
+</section>

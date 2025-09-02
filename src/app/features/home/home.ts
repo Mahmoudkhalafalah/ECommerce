@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FlowbiteService } from '../../core/services/flow-bite';
-import { PopularCategories } from "./popular-categories/popular-categories";
-import { PopularProducts } from "./popular-products/popular-products";
+import { PopularCategories } from "./components/popular-categories/popular-categories";
+import { PopularProducts } from "./components/popular-products/popular-products";
+import { MainCarousel } from "./components/main-carousel/main-carousel";
 
 @Component({
   selector: 'app-home',
-  imports: [PopularCategories, PopularProducts],
+  imports: [PopularCategories, PopularProducts, MainCarousel],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -16,13 +17,7 @@ export class Home {
       flowbite.initFlowbite();
     });
   }
-  sliderImages = [
-    { url: '/1.jpg', alt: 'Slider Image 1' },
-    { url: '/2.gif', alt: 'Slider Image 2' },
-    { url: '/3.png', alt: 'Slider Image 3' },
-    { url: '/4.png', alt: 'Slider Image 4' },
-    { url: '/5.png', alt: 'Slider Image 5' },
-  ];
+
 }
 
 

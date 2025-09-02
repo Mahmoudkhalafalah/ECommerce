@@ -1,7 +1,7 @@
-import { Products,product } from './../../../core/models/product';
+import { Products,product } from './../../../../core/models/product';
 import { Component } from '@angular/core';
-import { ProductsService } from '../../../core/services/products';
-import { ProductCard } from "./product-card/product-card";
+import { ProductsService } from '../../../../core/services/products';
+import { ProductCard } from "../../../../shared/components/product-card/product-card";
 @Component({
   selector: 'app-popular-products',
   imports: [ ProductCard],

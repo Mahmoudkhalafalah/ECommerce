@@ -1,6 +1,6 @@
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { Categories, Category } from '../../../core/models/category';
-import { CategoriesService } from '../../../core/services/categories';
+import { Categories, Category } from '../../../../core/models/category';
+import { CategoriesService } from '../../../../core/services/categories';
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-popular-categories',
