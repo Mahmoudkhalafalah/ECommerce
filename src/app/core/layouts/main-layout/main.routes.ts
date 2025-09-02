@@ -1,4 +1,3 @@
-import { Checkout } from './../../../features/checkout/checkout';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
