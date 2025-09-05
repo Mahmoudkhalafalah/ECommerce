@@ -68,24 +68,21 @@
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required />
       @let rePasswordControl = registerForm.get('rePassword');
-      @if(rePasswordControl?.errors && rePasswordControl?.touched){
+      @if(rePasswordControl?.touched && (rePasswordControl?.errors || registerForm.errors)){
       <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
         <p class="font-bold text-red-700">There are Errors: </p>
         @if(rePasswordControl?.getError('required')){
         <p class="font-medium text-red-600 ms-3">The field is required </p>
         }
-        @if(rePasswordControl?.getError('minlength')){
-        <p class="font-medium text-red-600 ms-3">The password Should be at least 8 characters</p>
-        }
-        @if(rePasswordControl?.getError('maxlength')){
-        <p class="font-medium text-red-600 ms-3">The name Should be at most 20 characters</p>
+        @if(registerForm.getError('mismatch')){
+        <p class="font-medium text-red-600 ms-3">Passwords do not match</p>
         }
       </div>
       }
     </div>
     <div class="mb-5">
-      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">repeat password</label>
-      <input type="number" id="phone" placeholder="01xxxxxxxxx" formControlName="phone"
+      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+      <input type="tel" id="phone" placeholder="01xxxxxxxxx" formControlName="phone"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required />
          @let phoneControl = registerForm.get('phone');
