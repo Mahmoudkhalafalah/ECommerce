@@ -10,10 +10,10 @@ import { product, Products, SingleProduct } from '../models/product';
 export class ProductsService {
   private readonly httpClient = inject(HttpClient);
 
-  getAllProducts() :Observable<Products>{
-    return this.httpClient.get<Products>(environment.baseUrl + 'products');
+  getAllProducts(pageNumber : number = 1) :Observable<Products>{
+    return this.httpClient.get<Products>(`${environment.baseUrl}products?page=${pageNumber}`);
   }
   getProductById(Pid : string) :Observable<SingleProduct>{
-    return this.httpClient.get<SingleProduct>(environment.baseUrl + 'products/' + Pid);
+    return this.httpClient.get<SingleProduct>(`${environment.baseUrl}products/${Pid}`);
   }
 }

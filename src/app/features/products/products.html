@@ -1,1 +1,17 @@
-<p>products works!</p>
+<section>
+  <div class="container mt-10 px-10 md:px-0">
+    <h2 class="text-3xl mb-4">All Products</h2>
+    <div class="all-products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
+      @for(product of products | paginate: { id: 'foo',
+      itemsPerPage: pageSize,
+      currentPage: p,
+      totalItems: total }; track product.id) {
+      <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
+  </div>
+  <div class="flex justify-center p-4">
+    <pagination-controls id="foo" class="my-pagination" (pageChange)="getProducts($event)">
+    </pagination-controls>
+  </div>
+</section>
