@@ -3,6 +3,7 @@ import { FlowbiteService } from '../../core/services/flow-bite';
 import { PopularCategories } from "./components/popular-categories/popular-categories";
 import { PopularProducts } from "./components/popular-products/popular-products";
 import { MainCarousel } from "./components/main-carousel/main-carousel";
+import { Details } from "../details/details";
 
 @Component({
   selector: 'app-home',

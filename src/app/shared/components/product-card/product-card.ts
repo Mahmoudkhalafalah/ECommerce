@@ -5,9 +5,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faStar,faEye } from '@fortawesome/free-solid-svg-icons';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-product-card',
-  imports: [FontAwesomeModule,CarouselModule],
+  imports: [FontAwesomeModule, CarouselModule, RouterLink],
   templateUrl: './product-card.html',
   styleUrl: './product-card.css'
 })

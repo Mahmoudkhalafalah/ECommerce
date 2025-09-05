@@ -33,4 +33,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./../../../features/checkout/checkout').then((m) => m.Checkout),
   },
+  {
+    path: 'details/:Pid',
+    loadComponent: () =>
+      import('./../../../features/details/details').then((m) => m.Details)
+  }
 ];
