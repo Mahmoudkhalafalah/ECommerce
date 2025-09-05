@@ -6,7 +6,9 @@
 .container {
   @apply mx-auto;
 }
-
+button {
+  @apply transition duration-300 ease-in-out cursor-pointer;
+}
 :root {
   --main-color: #0aad0a;
   --light-color: #f0f3f2;
