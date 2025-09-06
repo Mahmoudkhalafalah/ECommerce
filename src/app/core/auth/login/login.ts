@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,10 +10,11 @@ import {
 import { AuthService } from '../services/auth';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { InputField } from '../../../shared/components/input/input';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputField],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -20,11 +22,18 @@ export class Login {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
+  private readonly platformId = inject(PLATFORM_ID);
   private loginSubscription: any = new Subscription();
 
-  userEmail: string = localStorage.getItem('userEmail') || '';
+  userEmail!: string;
   isLoading: boolean = false;
   errorMessage: string = '';
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.userEmail = localStorage.getItem('userEmail') || '';
+    }
+  }
   loginForm = this.fb.group({
     email: [this.userEmail, [Validators.required, Validators.email]],
     password: [null, [Validators.required]],

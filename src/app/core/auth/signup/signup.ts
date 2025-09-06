@@ -10,10 +10,11 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { InputField } from "../../../shared/components/input/input";
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, InputField],
   templateUrl: './signup.html',
   styleUrl: './signup.css',
 })
@@ -40,8 +41,7 @@ export class Signup {
         '',
         [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(20),
+          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
         ],
       ],
       rePassword: ['', [Validators.required]],
@@ -53,9 +53,12 @@ export class Signup {
     { validators: this.confirmPassword }
   );
   confirmPassword(group: AbstractControl) {
-    return group.get('password')?.value === group.get('rePassword')?.value
-      ? null
-      : { mismatch: true };
+    if (group.get('password')?.value === group.get('rePassword')?.value) {
+      return null;
+    } else {
+      group?.get('rePassword')?.setErrors({ mismatch: true });
+      return { mismatch: true };
+    }
   }
 
   submit() {

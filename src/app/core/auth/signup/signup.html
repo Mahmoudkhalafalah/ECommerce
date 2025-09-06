@@ -1,103 +1,19 @@
 <div class="p-8 bg-gray-50 dark:bg-gray-800 w-3/4 md:w-1/2 mx-auto my-20 rounded-tl-4xl rounded-br-4xl shadow-2xl">
   <h2 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white text-center">Register</h2>
   <form class="max-w-md mx-auto" [formGroup]="registerForm">
-    <div class="mb-5">
-      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
-      <input type="text" id="name" formControlName="name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Enter your Name" required />
-      @let nameControl = registerForm.get('name');
-      @if(nameControl?.errors && nameControl?.touched){
-      <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
-        <p class="font-bold text-red-700">There are Errors: </p>
-        @if(nameControl?.getError('required')){
-        <p class="font-medium text-red-600 ms-3">The field is required </p>
-        }
-        @if(nameControl?.getError('minlength')){
-        <p class="font-medium text-red-600 ms-3">The name Should be at least 10 characters</p>
-        }
-        @if(nameControl?.getError('maxlength')){
-        <p class="font-medium text-red-600 ms-3">The name Should be at most 20 characters</p>
-        }
-      </div>
-      }
-    </div>
-    <div class="mb-5">
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-      <input type="email" id="email"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        formControlName="email" placeholder="Enter your Email" required />
-      @let email = registerForm.get('email');
-      @if(email?.errors && email?.touched){
-      <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
-        <p class="font-bold text-red-700">There are Errors: </p>
-        @if(email?.getError('required')){
-        <p class="font-medium text-red-600 ms-3">The field is required </p>
-        }
-        @if(email?.getError('email')){
-        <p class="font-medium text-red-600 ms-3">The email is incorrect</p>
-        }
-      </div>
-      }
-    </div>
-    <div class="mb-5">
-      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-      <input type="password" id="password" placeholder="••••••••" formControlName="password"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required />
-      @let passwordControl = registerForm.get('password');
-      @if(passwordControl?.errors && passwordControl?.touched){
-      <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
-        <p class="font-bold text-red-700">There are Errors: </p>
-        @if(passwordControl?.getError('required')){
-        <p class="font-medium text-red-600 ms-3">The field is required </p>
-        }
-        @if(passwordControl?.getError('minlength')){
-        <p class="font-medium text-red-600 ms-3">The password Should be at least 8 characters</p>
-        }
-        @if(passwordControl?.getError('maxlength')){
-        <p class="font-medium text-red-600 ms-3">The name Should be at most 20 characters</p>
-        }
-      </div>
-      }
-    </div>
-    <div class="mb-5">
-      <label for="rePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">repeat
-        password</label>
-      <input type="password" id="rePassword" placeholder="••••••••" formControlName="rePassword"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required />
-      @let rePasswordControl = registerForm.get('rePassword');
-      @if(rePasswordControl?.touched && (rePasswordControl?.errors || registerForm.errors)){
-      <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
-        <p class="font-bold text-red-700">There are Errors: </p>
-        @if(rePasswordControl?.getError('required')){
-        <p class="font-medium text-red-600 ms-3">The field is required </p>
-        }
-        @if(registerForm.getError('mismatch')){
-        <p class="font-medium text-red-600 ms-3">Passwords do not match</p>
-        }
-      </div>
-      }
-    </div>
-    <div class="mb-5">
-      <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
-      <input type="tel" id="phone" placeholder="01xxxxxxxxx" formControlName="phone"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        required />
-      @let phoneControl = registerForm.get('phone');
-      @if(phoneControl?.errors && phoneControl?.touched){
-      <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
-        <p class="font-bold text-red-700">There are Errors: </p>
-        @if(phoneControl?.getError('required')){
-        <p class="font-medium text-red-600 ms-3">The field is required </p>
-        }
-        @if(phoneControl?.getError('pattern')){
-        <p class="font-medium text-red-600 ms-3">The number should be egyptian </p>
-        }
-      </div>
-      }
-    </div>
+    <app-input [control]="registerForm.get('name')" [id]="'name'" [label]="'User Name'"
+      [placeholder]="'Enter Your Name'" [type]="'text'"></app-input>
+    <app-input [control]="registerForm.get('email')" [id]="'email'" [label]="'Email'" [placeholder]="'Enter Your Email'"
+      [type]="'email'"></app-input>
+    <app-input [control]="registerForm.get('password')" [id]="'password'" [label]="'Password'"
+      [placeholder]="'Enter Your Password'">
+      Password is Invalid</app-input>
+    <app-input [control]="registerForm.get('rePassword')" [id]="'rePassword'" [label]="'Confirm Password'"
+      [placeholder]="'Re-enter Your Password'"></app-input>
+    <app-input [control]="registerForm.get('phone')" [id]="'phone'" [label]="'Phone Number'"
+      [placeholder]="'01XXXXXXXXX'">
+      Enter an Egyptian number</app-input>
+
     <button [disabled]="(registerForm.invalid || isLoading)" type="button" (click)="submit()"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:bg-gray-400 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
       @if(isLoading){
