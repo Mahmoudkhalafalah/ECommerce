@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth-guard';
+import { isLoggedInGuard } from './core/guards/is-logged-in-guard';
 
 export const routes: Routes = [{
   path: '',
@@ -7,6 +9,7 @@ export const routes: Routes = [{
  },
 {
   path: '',
+  canMatch: [authGuard],
   loadComponent: () => import('./core/layouts/main-layout/main-layout').then(m => m.MainLayout),
   loadChildren: () => import('./core/layouts/main-layout/main.routes').then(m => m.routes)
 }];

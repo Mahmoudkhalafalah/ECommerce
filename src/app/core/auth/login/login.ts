@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import {
@@ -23,6 +24,7 @@ export class Login {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly cookieService = inject(CookieService);
   private loginSubscription: any = new Subscription();
 
   userEmail!: string;
@@ -46,12 +48,12 @@ export class Login {
         .loginUser(this.loginForm.value)
         .subscribe({
           next: (res) => {
-            console.log(res);
             if (res.message === 'success') {
               this.isLoading = false;
               this.errorMessage = '';
               this.loginForm.reset();
               this.loginForm.markAsUntouched();
+              this.cookieService.set('token', res.token);
               this.router.navigate(['/home']);
             }
           },

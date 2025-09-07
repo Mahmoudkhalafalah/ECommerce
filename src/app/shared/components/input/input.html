@@ -3,9 +3,9 @@
     {{label}}
   </label>
   <div class="relative">
-    <input [type]="type || (showPassword ? 'text' : 'password')" [id]="id" [formControl]="control" [class]="{' border-red': control?.errors && control?.touched,
-    'border-green': !control?.errors && control?.touched,
-  }" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    <input [type]="type || (showPassword ? 'text' : 'password')" [id]="id" [formControl]="control" [class]="{'border-red-600' :control?.errors && control?.touched,'placeholder:text-red-600': control?.errors && control?.touched,
+    'border-green-700': !control?.errors && control?.touched,
+  }" class="bg-gray-50 border-2 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white"
       [placeholder]="placeholder" required />
     @if(id === 'password' || id === 'rePassword'){
     <fa-icon [icon]="(showPassword? faEyeSlash : faEye)" (click)="showPassword = !showPassword"
