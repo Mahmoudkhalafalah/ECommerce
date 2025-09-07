@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../core/auth/services/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -9,4 +10,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Navbar {
   @Input() isLoggedIn: boolean = false;
+  private readonly authService = inject(AuthService);
+  logout() {
+    this.authService.signOut();
+    // Implement logout functionality here
+  }
 }
