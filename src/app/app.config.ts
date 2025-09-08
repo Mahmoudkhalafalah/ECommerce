@@ -14,7 +14,8 @@ import {
 } from '@angular/platform-browser';
 import { CookieService } from 'ngx-cookie-service';
 
-import { provideAnimations,provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,7 +25,8 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
     provideAnimations(),
-    importProvidersFrom(CookieService)
+    importProvidersFrom(CookieService),
+    provideToastr(),
   ],
 };
 

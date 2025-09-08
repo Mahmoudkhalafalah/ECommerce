@@ -6,7 +6,7 @@
             <img [src]="product?.imageCover" [alt]="product?.title">
           </div>
           <hr class="my-3 text-gray-400"/>
-          <p class="category mb-2">{{product?.category?.name}}</p>
+          <p class="category mb-2">{{product?.title}}</p>
           <p class="product-name">{{product?.brand?.name}}</p>
           <p class="old-price line-through text-red-700 text-[14px]">EGP {{product?.price}}</p>
           <div class="flex justify-between">
@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="buttons flex space-x-2 translate-y-20 group-hover:translate-y-0 duration-300 delay-100">
-          <button  class="grow bg-main text-light rounded-2xl p-2">Add to Cart</button>
+          <button  class="grow bg-main text-light rounded-2xl p-2" (click)="addToCart(product!._id)">Add to Cart</button>
           <button class="bg-main text-light rounded-2xl p-3"><fa-icon [icon]="faHeart"></fa-icon></button>
 
         </div>

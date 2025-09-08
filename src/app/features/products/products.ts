@@ -4,10 +4,12 @@ import { Component } from '@angular/core';
 import { ProductsService } from '../../core/services/products';
 import { ProductCard } from '../../shared/components/product-card/product-card';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { SearchPipe } from '../../shared/pipes/search-pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
-  imports: [ProductCard , NgxPaginationModule],
+  imports: [ProductCard , NgxPaginationModule, SearchPipe, FormsModule],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })
@@ -17,6 +19,7 @@ export class Products {
   p!: number;
   total!: number;
   products: product[] = [];
+  searchTerm: string = '';
   ngOnInit() {
     this.getProducts();
   }
