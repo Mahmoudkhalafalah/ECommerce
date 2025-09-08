@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { InputField } from '../../shared/components/input/input';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-user-data',
@@ -15,6 +16,10 @@ export class UserData {
   private readonly authService = inject(AuthService);
   private readonly fb = inject(FormBuilder);
   private readonly toastrService = inject(ToastrService);
+
+  userName = jwtDecode<any>(
+    inject(CookieService).get('token')
+  ).name;
   personalInfoForm = this.fb.group({
     name: [null],
     email: [null],
