@@ -22,4 +22,19 @@ export class CartService {
   getCartProducts(): Observable<Response> {
     return this.httpClient.get<Response>(`${environment.baseUrl}cart`, this.myHeaders);
   }
+  removeProductFromCart(productId: string): Observable<Response> {
+    return this.httpClient.delete<Response>(
+      `${environment.baseUrl}cart/${productId}`,
+      this.myHeaders
+    );
+  }
+  updateProductQuantity(productId: string, count: number): Observable<Response> {
+    let res = this.httpClient.put<Response>(
+      `${environment.baseUrl}cart/${productId}`,
+      { count: count },
+      this.myHeaders
+    );
+    
+    return res;
+  }
 }

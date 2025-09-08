@@ -38,4 +38,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./../../../features/details/details').then((m) => m.Details),
   },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./../../../features/user-data/user-data').then((m) => m.UserData),
+  },
 ];

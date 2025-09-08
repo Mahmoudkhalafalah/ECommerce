@@ -11,7 +11,7 @@
     <app-input [control]="registerForm.get('rePassword')" [id]="'rePassword'" [label]="'Confirm Password'"
       [placeholder]="'Re-enter Your Password'"></app-input>
     <app-input [control]="registerForm.get('phone')" [id]="'phone'" [label]="'Phone Number'"
-      [placeholder]="'01XXXXXXXXX'">
+      [placeholder]="'01XXXXXXXXX'" [type]="'tel'">
       Enter an Egyptian number</app-input>
 
     <button [disabled]="(registerForm.invalid || isLoading)" type="button" (click)="submit()"

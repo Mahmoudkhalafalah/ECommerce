@@ -18,6 +18,14 @@ export class Cart {
   ngOnInit() {
     this.loadCartItems();
   }
+  update(items: ProductElement[]) {
+    console.log(items);
+    this.cartItems = items;
+    this.totalItems = items.length;
+  }
+  updatePrice(price: number) {
+    this.totalPrice = price;
+  }
   loadCartItems() {
     this.cartService.getCartProducts().subscribe({
       next: (response) => {

@@ -27,17 +27,12 @@ export class Login {
   private readonly cookieService = inject(CookieService);
   private loginSubscription: any = new Subscription();
 
-  userEmail!: string;
   isLoading: boolean = false;
   errorMessage: string = '';
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.userEmail = localStorage.getItem('userEmail') || '';
-    }
-  }
+  
   loginForm = this.fb.group({
-    email: [this.userEmail, [Validators.required, Validators.email]],
+    email: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required]],
   });
   submit() {

@@ -34,14 +34,20 @@
             class="block py-2 px-3 text-white rounded-sm  md:hover:bg-transparent md:border-0 duration-200 hover:text-main md:p-0">Brands</a>
         </li>
 
-        <li>
-          <fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700" [icon]="faCartFlatbed" routerLink="/cart"></fa-icon>
+        <li class="relative cursor-pointer group" routerLink="/cart">
+          @if(itemCount! > 0) {
+          <span
+            class="absolute size-4 bg-red-500 duration-200 group-hover:bg-red-800 top-0 right-0 rounded-full text-[12px] flex justify-center items-center text-white">{{itemCount}}</span>
+          }<fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700" [icon]="faCartFlatbed"
+            ></fa-icon>
         </li>
         <li>
-          <fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700" [icon]="faSignOut"  (click)="logout()"></fa-icon>
+          <fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700" [icon]="faSignOut"
+            (click)="logout()"></fa-icon>
         </li>
-        <li>
-          <fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700" [icon]="faUser"></fa-icon>
+        <li routerLink="/profile">
+          <fa-icon class="duration-200 text-2xl text-main cursor-pointer hover:text-green-700"
+            [icon]="faUser"></fa-icon>
         </li>
 
         }

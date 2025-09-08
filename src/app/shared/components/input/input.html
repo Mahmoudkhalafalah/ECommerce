@@ -6,15 +6,15 @@
     <input [type]="type || (showPassword ? 'text' : 'password')" [id]="id" [formControl]="control" [class]="{'border-red-600' :control?.errors && control?.touched,'placeholder:text-red-600': control?.errors && control?.touched,
     'border-green-700': !control?.errors && control?.touched,
   }" class="bg-gray-50 border-2 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white"
-      [placeholder]="placeholder" required />
-    @if(id === 'password' || id === 'rePassword'){
+      [placeholder]="placeholder"/>
+    @if(id === 'password' || id === 'rePassword' || id === 'oldPassword'){
     <fa-icon [icon]="(showPassword? faEyeSlash : faEye)" (click)="showPassword = !showPassword"
       class="absolute end-0 pr-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-blue-400 duration-200 text-gray-800"></fa-icon>}
   </div>
   @if(control?.errors && control?.touched){
   <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
     <p class="font-bold text-red-700">There are Errors: </p>
-    @if(control?.getError('required')){
+    @if(control?.hasError('required')){
     <p class="font-medium text-red-600 ms-3">The field is required </p>
     }
     @if(control?.getError('email')){

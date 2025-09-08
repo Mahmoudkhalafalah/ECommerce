@@ -1,0 +1,33 @@
+<section class="my-20">
+  <div class="container border border-gray-300 p-5 rounded-lg shadow-lg grid grid-cols-12 gap-5 bg-gray-400">
+    <h2 class="text-3xl font-bold text-main mb-5 col-span-12">Profile</h2>
+    <div class="col-span-3">
+      <img src="/profile.png" alt="" class="block w-3/4 mx-auto rounded-lg ">
+    </div>
+    <div class="col-span-9 px-10">
+      <form class="space-y-5" [formGroup]="personalInfoForm">
+        <h3 class="text-2xl text-gray-800 font-medium">Update Personal data</h3>
+        <app-input [control]="personalInfoForm.get('name')" [id]="'name'" [label]="'Name'"
+          [placeholder]="'Enter New Name'" [type]="'text'"></app-input>
+        <app-input [control]="personalInfoForm.get('email')" [id]="'email'" [label]="'Email'"
+          [placeholder]="'Enter New Email'" [type]="'email'"></app-input>
+        <app-input [control]="personalInfoForm.get('phone')" [id]="'phone'" [label]="'Phone'"
+          [placeholder]="'Enter New Phone Number'" [type]="'text'"></app-input>
+
+        <button type="submit" (click)="submit()"
+          class="bg-main text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer">Update</button>
+      </form>
+      <h3 class="text-2xl text-gray-800 font-medium my-3">Edit Password</h3>
+      <form action="" class="space-y-5" [formGroup]="passForm">
+        <app-input [control]="passForm.get('currentPassword')" [id]="'oldPassword'" [label]="'Old Password'"
+          [placeholder]="'Enter Password'"></app-input>
+        <app-input [control]="passForm.get('password')" [id]="'password'" [label]="'New Password'"
+          [placeholder]="'Enter New Password'"></app-input>
+        <app-input [control]="passForm.get('rePassword')" [id]="'rePassword'" [label]="'Repeat Password'"
+          [placeholder]="'Repeat NewPassword'"></app-input>
+        <button type="submit" (click)="changePassword()"
+          class="bg-main text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
