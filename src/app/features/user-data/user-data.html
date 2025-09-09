@@ -25,8 +25,8 @@
           [placeholder]="'Enter New Password'"></app-input>
         <app-input [control]="passForm.get('rePassword')" [id]="'rePassword'" [label]="'Repeat Password'"
           [placeholder]="'Repeat NewPassword'"></app-input>
-        <button type="submit" (click)="changePassword()"
-          class="bg-main text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer">Submit</button>
+        <button type="submit" (click)="changePassword()" [disabled]="passForm.invalid"
+          class="bg-main text-white py-2 px-4 rounded hover:bg-green-800 cursor-pointer disabled:bg-gray-300 disabled:!cursor-not-allowed disabled:hover:bg-gray-300">Submit</button>
       </form>
     </div>
   </div>

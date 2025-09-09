@@ -7,7 +7,7 @@
     'border-green-700': !control?.errors && control?.touched,
   }" class="bg-gray-50 border-2 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white"
       [placeholder]="placeholder"/>
-    @if(id === 'password' || id === 'rePassword' || id === 'oldPassword'){
+    @if(id === 'password' || id === 'rePassword' || id === 'oldPassword' || id === 'newPassword'){
     <fa-icon [icon]="(showPassword? faEyeSlash : faEye)" (click)="showPassword = !showPassword"
       class="absolute end-0 pr-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-blue-400 duration-200 text-gray-800"></fa-icon>}
   </div>

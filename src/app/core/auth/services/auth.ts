@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import e from 'express';
 @Injectable({
   providedIn: 'root',
 })
@@ -42,9 +43,7 @@ export class AuthService {
       },
     });
   }
-  changePassword(
-    passwords: any
-  ): Observable<any> {
+  changePassword(passwords: any): Observable<any> {
     return this.httpClient.put(
       environment.baseUrl + `users/changeMyPassword`,
       passwords,
@@ -55,4 +54,24 @@ export class AuthService {
       }
     );
   }
+  resetPassword(email: string , pass: string): Observable<any> {
+    return this.httpClient.put(
+      environment.baseUrl + `auth/resetPassword`,
+      {
+        email : email,
+        newPassword: pass
+      }
+    );
+  }
+  sendCode(email: string): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + `auth/forgotPasswords`, {
+      email: email,
+    });
+  }
+  verifyCode(code: number): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + `auth/verifyResetCode`, {
+      resetCode: code,
+    });
+  }
+
 }

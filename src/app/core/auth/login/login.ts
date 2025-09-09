@@ -1,9 +1,7 @@
+import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
-import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
   Validators,
   ReactiveFormsModule,
   FormBuilder,
@@ -12,7 +10,7 @@ import { AuthService } from '../services/auth';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { InputField } from '../../../shared/components/input/input';
-
+import { ResetForm } from './components/reset-form/reset-form';
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, InputField],
@@ -23,14 +21,13 @@ export class Login {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
-  private readonly platformId = inject(PLATFORM_ID);
   private readonly cookieService = inject(CookieService);
+  private readonly matdialog = inject(MatDialog);
   private loginSubscription: any = new Subscription();
 
   isLoading: boolean = false;
   errorMessage: string = '';
 
-  
   loginForm = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required]],
@@ -59,5 +56,11 @@ export class Login {
           },
         });
     }
+  }
+  resetPassword() {
+    console.log('resetPassword');
+  }
+  onClick(){
+    this.matdialog.open(ResetForm , {disableClose: true})
   }
 }

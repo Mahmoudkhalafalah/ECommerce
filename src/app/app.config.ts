@@ -27,6 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     importProvidersFrom(CookieService),
     provideToastr(),
+
   ],
 };
 

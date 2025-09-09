@@ -1,15 +1,12 @@
 <div class="p-8 bg-gray-50 dark:bg-gray-800 w-3/4 md:w-1/2 mx-auto my-20 rounded-tl-4xl rounded-br-4xl shadow-2xl">
   <h2 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white text-center">Login to your account</h2>
   <form class="max-w-md mx-auto" [formGroup]="loginForm">
-    <app-input [control]="loginForm.get('email')" [id]="'email'" [label]="'Email'" [placeholder]="'Enter Your Email'" [type]="'email'"></app-input>
-    <app-input [control]="loginForm.get('password')" [id]="'password'" [label]="'Password'" [placeholder]="'Enter Your Password'"></app-input>
-    <div class="flex items-start mb-5">
-      <div class="flex items-center h-5">
-        <input id="remember" type="checkbox" value=""
-          class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
-      </div>
-      <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-    </div>
+    <app-input [control]="loginForm.get('email')" [id]="'email'" [label]="'Email'" [placeholder]="'Enter Your Email'"
+      [type]="'email'"></app-input>
+    <app-input [control]="loginForm.get('password')" [id]="'password'" [label]="'Password'"
+      [placeholder]="'Enter Your Password'"></app-input>
+    <p
+      class="text-end text-fuchsia-50 hover:text-main cursor-pointer duration-150" mat-raised-button (click)="onClick()">forgot password?</p>
     <button type="submit" [disabled]="(loginForm.invalid || isLoading)"
       class="text-white disabled:hover:bg-gray-400 disabled:bg-gray-400 disabled:!cursor-not-allowed bg-blue-700 focus:ring-4 hover:bg-blue-700 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600  dark:focus:ring-blue-800"
       (click)="submit()">
