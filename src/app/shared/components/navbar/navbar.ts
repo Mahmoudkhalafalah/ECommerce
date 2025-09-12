@@ -7,6 +7,7 @@ import {
   faUser,
   faSignOut,
   faCartFlatbed,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-navbar',
@@ -35,6 +36,7 @@ export class Navbar {
   faUser = faUser;
   faSignOut = faSignOut;
   faCartFlatbed = faCartFlatbed;
+  faHeart = faHeart;
   logout() {
     this.authService.signOut();
     // Implement logout functionality here

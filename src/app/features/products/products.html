@@ -25,7 +25,7 @@
       itemsPerPage: pageSize,
       currentPage: p,
       totalItems: total } | search : searchTerm; track product.id) {
-      <app-product-card [product]="product"></app-product-card>
+        <app-product-card [product]="product" [Wishlist]="Wishlist"></app-product-card>
       }
       @empty {
       <p class="text-gray-500 text-center col-span-full">No products found.</p>

@@ -11,30 +11,26 @@ import { Response } from '../../../core/models/cart';
 export class CartService {
   private readonly httpClient = inject(HttpClient);
   private readonly cookieService = inject(CookieService);
-  myHeaders = { headers: { token: this.cookieService.get('token') } };
   addProductToCart(productId: string): Observable<Response> {
     return this.httpClient.post<Response>(
       `${environment.baseUrl}cart`,
-      { productId: productId },
-      this.myHeaders
+      { productId: productId }
     );
   }
   getCartProducts(): Observable<Response> {
-    return this.httpClient.get<Response>(`${environment.baseUrl}cart`, this.myHeaders);
+    return this.httpClient.get<Response>(`${environment.baseUrl}cart`);
   }
   removeProductFromCart(productId: string): Observable<Response> {
     return this.httpClient.delete<Response>(
-      `${environment.baseUrl}cart/${productId}`,
-      this.myHeaders
+      `${environment.baseUrl}cart/${productId}`
     );
   }
   updateProductQuantity(productId: string, count: number): Observable<Response> {
     let res = this.httpClient.put<Response>(
       `${environment.baseUrl}cart/${productId}`,
-      { count: count },
-      this.myHeaders
+      { count: count }
     );
-    
+
     return res;
   }
 }

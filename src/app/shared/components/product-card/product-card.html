@@ -1,22 +1,35 @@
 <div class="item p-5 shadow-xl group overflow-hidden rounded-2xl mx-5 md:mx-0">
-        <div class="relative inner p-3 group-hover:border-main mb-5 border-4 duration-300 border-transparent rounded-lg cursor-pointer" [routerLink]="['/details', product?._id]" >
-          <span class="absolute top-0 left-full -translate-1/2 bg-red-500 p-3 rounded-full z-1">7%</span>
-          <div class="card-img relative">
-            <fa-icon [icon]="faEye" class="size-9 duration-300 group-hover:opacity-100 opacity-0 absolute flex justify-center items-center text-main bg-gray-200 rounded-full -top-1 text-[18px] hover:text-white hover:bg-main"></fa-icon>
-            <img [src]="product?.imageCover" [alt]="product?.title">
-          </div>
-          <hr class="my-3 text-gray-400"/>
-          <p class="category mb-2">{{product?.title}}</p>
-          <p class="product-name">{{product?.brand?.name}}</p>
-          <p class="old-price line-through text-red-700 text-[14px]">EGP {{product?.price}}</p>
-          <div class="flex justify-between">
-            <p class="price">EGP {{product?.price}}</p>
-            <p class="rating"> <fa-icon [icon]="faStar" class="text-amber-400"></fa-icon> {{product?.ratingsAverage}}</p>
-          </div>
-        </div>
-        <div class="buttons flex space-x-2 translate-y-20 group-hover:translate-y-0 duration-300 delay-100">
-          <button  class="grow bg-main text-light rounded-2xl p-2" (click)="addToCart(product!._id)">Add to Cart</button>
-          <button class="bg-main text-light rounded-2xl p-3"><fa-icon [icon]="faHeart"></fa-icon></button>
+  <div
+    class="relative inner p-3 group-hover:border-main mb-5 border-4 duration-300 border-transparent rounded-lg cursor-pointer"
+    [routerLink]="['/details', product?._id]">
+    <span class="absolute top-0 left-full -translate-1/2 bg-red-500 p-3 rounded-full z-1">7%</span>
+    <div class="card-img relative">
+      <fa-icon [icon]="faEye"
+        class="size-9 duration-300 group-hover:opacity-100 opacity-0 absolute flex justify-center items-center text-main bg-gray-200 rounded-full -top-1 text-[18px] hover:text-white hover:bg-main"></fa-icon>
+      <img [src]="product?.imageCover" [alt]="product?.title">
+    </div>
+    <hr class="my-3 text-gray-400" />
+    <p class="category mb-2">{{product?.title}}</p>
+    <p class="product-name">{{product?.brand?.name}}</p>
+    <p class="old-price line-through text-red-700 text-[14px]">EGP {{product?.price}}</p>
+    <div class="flex justify-between">
+      <p class="price">EGP {{product?.price}}</p>
+      <p class="rating"> <fa-icon [icon]="faStar" class="text-amber-400"></fa-icon> {{product?.ratingsAverage}}</p>
+    </div>
+  </div>
+  @if(!wishList){
+  <div class="buttons flex space-x-2 translate-y-20 group-hover:translate-y-0 duration-300 delay-100">
+    <button class="grow bg-main text-light rounded-2xl p-2" (click)="addToCart(product!._id)">Add to Cart</button>
+    <button class="bg-main text-light rounded-2xl p-3" (click)="addProductToWishList(product!._id)"><fa-icon
+        [icon]="(isInWishList(product!._id) ? faHS : faHeart)"></fa-icon></button>
 
-        </div>
-      </div>
+  </div>
+  }
+  @else {
+  <div class="buttons flex justify-center space-x-2 translate-y-20 group-hover:translate-y-0 duration-300 delay-100">
+    <button class="bg-red-500 text-light rounded-2xl p-3" (click)="removeProductFromWishList(product!._id)"><fa-icon
+        [icon]="faTrashCan"></fa-icon></button>
+
+  </div>
+  }
+</div>

@@ -43,4 +43,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./../../../features/checkout/checkout').then((m) => m.Checkout),
   },
+  {
+    path: 'wishlist',
+    loadComponent: () =>
+      import('./../../../features/wishlist/wishlist').then((m) => m.Wishlist),
+  }
 ];

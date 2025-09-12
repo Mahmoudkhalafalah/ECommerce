@@ -10,24 +10,18 @@ import { environment } from '../../../../environments/environment.development';
 export class CheckoutService {
   private readonly HttpClient = inject(HttpClient);
   private readonly cookieService = inject(CookieService);
-  token = {
-    headers: {
-      token: this.cookieService.get('token'),
-    },
-  };
+
   checkoutWithCash(shippingData: Object, cartID: string): Observable<any> {
     return this.HttpClient.post(
       environment.baseUrl + `orders/${cartID}`,
-      shippingData,
-      this.token
+      shippingData
     );
   }
   checkoutWithVisa(shippingData: Object, cartID: string): Observable<any> {
     const url = `${environment.baseUrl}orders/checkout-session/${cartID}/?url=${encodeURIComponent(window.location.origin)}`;
     return this.HttpClient.post(
       url,
-      shippingData,
-      this.token
+      shippingData
     );
   }
 }
