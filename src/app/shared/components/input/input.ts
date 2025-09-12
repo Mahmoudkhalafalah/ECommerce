@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +16,7 @@ export class InputField {
   @Input() type: string = '';
   @Input() placeholder: string = '';
   @Input() id: string = '';
+  @Input() style: string = 'input';
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showPassword: boolean = false;

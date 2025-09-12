@@ -12,4 +12,6 @@ export const routes: Routes = [{
   canMatch: [authGuard],
   loadComponent: () => import('./core/layouts/main-layout/main-layout').then(m => m.MainLayout),
   loadChildren: () => import('./core/layouts/main-layout/main.routes').then(m => m.routes)
-}];
+},
+
+];

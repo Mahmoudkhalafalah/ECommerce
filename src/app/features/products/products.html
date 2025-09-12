@@ -5,12 +5,30 @@
       <input type="text" placeholder="Search Products" [(ngModel)]="searchTerm"
         class="border-2 p-2 rounded w-full md:w-1/3 mb-4 bg-gray-300 outline-none focus:border-main focus:ring-0 focus:outline-none" />
     </div>
+    <div class="flex flex-wrap gap-4 mb-6 justify-center md:justify-start">
+      <select [(ngModel)]="selectedCategory" (change)="applyFilters()" class="border-2 rounded p-2 min-w-[170px] focus:border-main">
+        <option value="">All Categories</option>
+        @for(category of categories; track category._id) {
+          <option [value]="category._id">{{category.name}}</option>
+        }
+      </select>
+      <select [(ngModel)]="selectedBrand" (change)="applyFilters()" class="border-2 rounded p-2 min-w-[150px] focus:border-main">
+        <option value="">All Brands</option>
+        @for(brand of brands; track brand._id) {
+          <option [value]="brand._id">{{brand.name}}</option>
+        }
+      </select>
+    </div>
+
     <div class="all-products grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
-      @for(product of products | paginate: { id: 'foo',
+      @for(product of filteredProducts | paginate: { id: 'foo',
       itemsPerPage: pageSize,
       currentPage: p,
       totalItems: total } | search : searchTerm; track product.id) {
       <app-product-card [product]="product"></app-product-card>
+      }
+      @empty {
+      <p class="text-gray-500 text-center col-span-full">No products found.</p>
       }
     </div>
   </div>

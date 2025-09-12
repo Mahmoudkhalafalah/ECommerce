@@ -20,7 +20,7 @@
           <p>Price</p>
           <p>{{totalPrice}}</p>
         </div>
-        <button class="bg-main text-white py-2 w-full rounded-2xl hover:bg-green-800 disabled:bg-gray-500 disabled:!cursor-not-allowed" [disabled]="!cartItems[0]">Proceed to checkout</button>
+        <button class="bg-main text-white py-2 w-full rounded-2xl hover:bg-green-800 disabled:bg-gray-500 disabled:!cursor-not-allowed" [disabled]="!cartItems[0]" routerLink="/checkout">Proceed to checkout</button>
       </div>
     </div>
   </div>

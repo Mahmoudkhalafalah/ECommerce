@@ -29,11 +29,6 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'checkout',
-    loadComponent: () =>
-      import('./../../../features/checkout/checkout').then((m) => m.Checkout),
-  },
-  {
     path: 'details/:Pid',
     loadComponent: () =>
       import('./../../../features/details/details').then((m) => m.Details),
@@ -42,5 +37,10 @@ export const routes: Routes = [
     path: 'profile',
     loadComponent: () =>
       import('./../../../features/user-data/user-data').then((m) => m.UserData),
+  },
+  {
+    path: 'checkout',
+    loadComponent: () =>
+      import('./../../../features/checkout/checkout').then((m) => m.Checkout),
   },
 ];

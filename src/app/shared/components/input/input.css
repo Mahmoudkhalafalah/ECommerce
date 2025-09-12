@@ -1,0 +1,10 @@
+.input-error {
+  border-color: #dc2626 !important;
+  outline-color: #dc2626 !important;
+  
+}
+
+/* Target the placeholder with a more specific selector */
+.input-error::placeholder {
+    color: #dc2626 !important;
+}

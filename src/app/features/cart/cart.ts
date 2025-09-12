@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CartProduct } from './components/cart-product/cart-product';
 import { CartService } from './services/cart-service';
 import { ProductElement } from '../../core/models/cart';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [CartProduct],
+  imports: [CartProduct, RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
@@ -28,6 +29,7 @@ export class Cart {
   }
   loadCartItems() {
     this.cartService.getCartProducts().subscribe({
+
       next: (response) => {
         this.totalItems = response.numOfCartItems;
         this.totalPrice = response.data.totalCartPrice

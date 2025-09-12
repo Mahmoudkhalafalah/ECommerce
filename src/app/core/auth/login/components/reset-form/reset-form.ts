@@ -24,7 +24,6 @@ export class ResetForm {
     resetCode: [null, [Validators.required]],
     newPassword: [null, [Validators.required]],
   });
-
   resetPassword() {
     if (this.resetForm.valid) {
       this.isLoading = true;

@@ -1,18 +1,32 @@
 <div class="mb-5">
-  <label [for]="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+  <label [for]="id" class="block mb-2 text-gray-700 font-semibold ">
     {{label}}
   </label>
   <div class="relative">
-    <input [type]="type || (showPassword ? 'text' : 'password')" [id]="id" [formControl]="control" [class]="{'border-red-600' :control?.errors && control?.touched,'placeholder:text-red-600': control?.errors && control?.touched,
-    'border-green-700': !control?.errors && control?.touched,
-  }" class="bg-gray-50 border-2 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:text-white"
-      [placeholder]="placeholder"/>
+    @if(style === 'input'){
+    <input [type]="type || (showPassword ? 'text' : 'password')" [id]="id" [formControl]="control" [class]="{
+        'input-error': (control?.errors && control?.touched),
+        'border-main': (!control?.errors && control?.touched)
+      }"
+      class="bg-light-color border-2 text-gray-900 outline-transparent focus:outline-0 focus:ring-0 text-sm rounded-lg block w-full p-2.5 border-gray-300"
+      [placeholder]="placeholder" />
+    }
+    @else if (style === 'text') {
+      <textarea [id]="id" [formControl]="control" [class]="{
+        'input-error': (control?.errors && control?.touched),
+        'border-main': (!control?.errors && control?.touched)
+      }"
+      class="bg-light-color border-2 text-gray-900 outline-transparent focus:outline-0 focus:ring-0 text-sm rounded-lg block w-full p-2.5 border-gray-300"
+      [placeholder]="placeholder">
+      </textarea>
+    }
     @if(id === 'password' || id === 'rePassword' || id === 'oldPassword' || id === 'newPassword'){
     <fa-icon [icon]="(showPassword? faEyeSlash : faEye)" (click)="showPassword = !showPassword"
-      class="absolute end-0 pr-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-blue-400 duration-200 text-gray-800"></fa-icon>}
+      class="absolute end-0 pr-3 top-1/2 -translate-y-1/2 cursor-pointer hover:text-main duration-200 text-gray-800"></fa-icon>
+    }
   </div>
   @if(control?.errors && control?.touched){
-  <div class="error-message  rounded-xl shadow-2xl p-2 my-3 w-3/4">
+  <div class="error-message rounded-xl shadow-2xl p-2 my-3 w-3/4 bg-light-color">
     <p class="font-bold text-red-700">There are Errors: </p>
     @if(control?.hasError('required')){
     <p class="font-medium text-red-600 ms-3">The field is required </p>
